@@ -136,58 +136,6 @@ Raw CSV → 3NF relational schema:
 
 ---
 
-## Project Structure
-
-```
-sales-analytics-pipeline/
-├── data/
-│   ├── raw/                  # Original CSV + FX rates (gitignored)
-│   └── processed/            # Cleaned data + forecast output (gitignored)
-├── db/
-│   ├── schema.sql            # Normalized 3NF schema (CREATE TABLE statements)
-│   └── sales.db              # Populated SQLite database (gitignored)
-├── src/
-│   ├── extract.py            # Kaggle download + FX API fetch
-│   ├── load_db.py            # CSV → normalized SQLite (INSERT INTO ... SELECT)
-│   ├── queries.sql           # 8 analysis queries (revenue, cohort, MoM, etc.)
-│   ├── model.py              # Holt-Winters forecast + baseline comparison
-│   ├── excel_report.py       # 4-tab Excel report with native charts
-│   ├── llm_insights.py       # Groq API → 3 business recommendations
-│   └── client_summary.py     # PDF generation with reportlab
-├── outputs/                  # Generated reports (gitignored)
-│   ├── report.xlsx
-│   ├── summary.pdf
-│   ├── forecast_chart.png
-│   ├── model_metrics.json
-│   └── llm_recommendations.json
-├── .gitignore
-├── requirements.txt
-└── README.md
-```
-
----
-
-## Resume Bullets
-
-Use these for your resume / LinkedIn. Pick the ones that match the role you're targeting.
-
-**For Data Analyst roles:**
-- Built an end-to-end sales analytics pipeline processing 1M+ e-commerce transactions — normalized raw CSV into a 3NF SQLite schema (customers, products, transactions), wrote 8 SQL queries for revenue/cohort analysis, and joined a live FX-rate API to produce GBP- and USD-normalized reporting.
-- Forecasted monthly revenue using Holt-Winters exponential smoothing, achieving **18.88% lower RMSE** (£266,646 vs £328,685 baseline) validated on a 3-month holdout period (Oct–Dec 2011).
-- Automated a multi-tab Excel report (KPIs, trend charts, forecast, raw data) and an LLM-generated client recommendation summary — replicating a business analyst's weekly reporting workflow end-to-end.
-
-**For Data Engineer / Pipeline roles:**
-- Designed and built a repeatable ETL pipeline: extracted 1M+ rows via KaggleHub, transformed and loaded into a normalized SQLite database (805K clean records from 5,942 customers and 4,950 products), and joined live FX rates from a REST API at invoice-date granularity.
-- Engineered a forecasting module comparing Holt-Winters exponential smoothing against a moving-average baseline — documented model selection rationale, train/test split methodology, and RMSE/MAE metrics in a structured JSON deliverable.
-- Implemented an LLM integration layer (Groq API) with hallucination detection — validates generated recommendations against source KPIs to ensure factual accuracy before client delivery.
-
-**For ML / Forecasting roles:**
-- Developed a time-series forecasting solution for monthly revenue using Holt-Winters exponential smoothing (additive trend + seasonality, damped), outperforming a 3-month moving-average baseline by **18.88% on RMSE** with a 3-month holdout validation strategy.
-- Constructed a full analytics pipeline from raw ingestion through SQL aggregation to model input — ensuring the forecasting module consumed structured SQL output rather than raw data, maintaining reproducibility and auditability.
-- Evaluated model performance with RMSE, MAE, and percentage improvement metrics; visualized actual vs. predicted values with confidence intervals for stakeholder communication.
-
----
-
 ## License
 
 MIT
