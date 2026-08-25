@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+build/
+dist/
+*.egg
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env.local
+.env.*.local
+
+# Environment variables (NEVER commit)
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Data & outputs (large or generated files)
+data/raw/*.csv
+data/processed/*.csv
+db/*.db
+outputs/*.xlsx
+outputs/*.pdf
+outputs/*.png
+outputs/*.json
+notebooks/.ipynb_checkpoints/
+
+# Keep directory structure with .gitkeep
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!db/.gitkeep
+!outputs/.gitkeep
+!notebooks/.gitkeep
+
+# Logs
+*.log
+logs/
